@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Guess Number Game</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #1a1a1a;
+            color: white;
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #9E76B4;
+            text-shadow: 0 0 12px #9E76B4;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-info {
+            background: #1a1a1a;
+            width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #57C48D;
+            box-shadow: 0 0 20px #57C48D;
+            text-align: left;
+        }
+
+        h2 {
+            color: #57C48D;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        p, li {
+            font-size: 18px;
+            color: #cfcfcf;
+        }
+
+        .status {
+            color: #7fffd4;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            color: #57C48D;
+            text-decoration: none;
+            border: 1px solid #57C48D;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .back:hover {
+            background: #57C48D;
+            color: #1a1a1a;
+            box-shadow: 0 0 20px #57C48D;
+        }
+
+    .game-box{
+    margin-top:20px;
+}
+
+.code-toggle{
+
+    margin-top:20px;
+
+    display:inline-block;
+
+    cursor:pointer;
+
+    color:#57C48D;
+
+    border:1px solid #57C48D;
+
+    padding:10px 20px;
+
+    border-radius:10px;
+
+    transition:0.3s;
+}
+
+.code-toggle:hover{
+
+    background:#57C48D;
+
+    color:#1a1a1a;
+
+    box-shadow:0 0 20px #57C48D;
+}
+
+.code-box{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    transition:0.5s;
+
+    white-space:pre-wrap;
+
+    color:#57C48D;
+}
+
+.code-box.show{
+
+    max-height:1000px;
+
+    opacity:1;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <h1>🎲 Guess Number Game</h1>
+
+    <div class="project-info">
+
+        <h2>Description</h2>
+        <p>
+            เกมทายตัวเลขที่สร้างด้วย Python
+            ผู้เล่นจะต้องเดาตัวเลขที่โปรแกรมสุ่มขึ้นมา
+            จนกว่าจะทายถูก
+        </p>
+
+        <h2>Technology Used</h2>
+        <ul>
+            <li>Python</li>
+            <li>Random Module</li>
+            <li>While Loop</li>
+            <li>If / Else</li>
+            <li>Input</li>
+        </ul>
+
+        <h2>What I Learned</h2>
+        <ul>
+            <li>การใช้ตัวแปร</li>
+            <li>การใช้ลูป</li>
+            <li>การใช้เงื่อนไข</li>
+            <li>การออกแบบตรรกะของโปรแกรม</li>
+        </ul>
+
+        <h2>Challenges</h2>
+        <ul>
+            <li>การตรวจสอบค่าที่ผู้ใช้ป้อน</li>
+            <li>การสร้างลูปให้ทำงานจนกว่าจะทายถูก</li>
+        </ul>
+
+        <h2>Status</h2>
+        <p class="status">Completed ✅</p>
+
+        <h2>Try It🎉</h2>
+
+    <div class="game-box">
+
+    <p>เดาตัวเลขระหว่าง 1 ถึง 100</p>
+
+    <input
+        type="number"
+        id="guessInput"
+        placeholder="ใส่ตัวเลขที่นี่">
+
+    <button onclick="checkGuess()">
+        Guess
+    </button>
+
+    <p id="resultText"></p>
+
+</div>
+
+<div class="code-toggle"
+     onclick="toggleCode()">
+
+    > VIEW SOURCE CODE
+
+</div>
+
+<pre id="sourceCode" class="code-box">
+
+import random
+
+number = random.randint(1,100)
+
+guess = None
+
+while guess != number:
+
+    guess = int(input("เดาตัวเลขระหว่าง 1 ถึง 100: "))
+
+    if guess < number:
+        print("ต่ำเกินไป! ลองอีกครั้ง.")
+
+    elif guess > number:
+        print("สูงเกินไป! ลองอีกครั้ง.")
+
+    else:
+        print("ยินดีด้วย! คุณเดาถูกแล้ว!")
+
+</pre>
+
+    <a href="portfolio.html" class="back">← Back to Projects</a>
+
+    <script>
+
+let secretNumber = Math.floor(Math.random() * 100) + 1;
+
+function checkGuess(){
+
+    const guess = Number(document.getElementById("guessInput").value);
+    const result = document.getElementById("resultText");
+
+    if(guess < secretNumber){
+        result.textContent = "ต่ำเกินไป! ลองอีกครั้ง";
+    }
+    else if(guess > secretNumber){
+        result.textContent = "สูงเกินไป! ลองอีกครั้ง";
+    }
+    else{
+        result.innerHTML = `
+            🎉 ยินดีด้วย! คุณเดาถูกแล้ว!<br><br>
+            <button onclick="newGame()">Play Again</button>
+        `;
+    }
+}
+
+function newGame(){
+
+    secretNumber = Math.floor(Math.random() * 100) + 1;
+
+    document.getElementById("guessInput").value = "";
+
+    document.getElementById("resultText").textContent =
+    "🎲 เริ่มเกมใหม่แล้ว!";
+}
+
+function toggleCode(){
+
+    document
+    .getElementById("sourceCode")
+    .classList
+    .toggle("show");
+}
+
+</script>
+
+</body>
+
+</html>
