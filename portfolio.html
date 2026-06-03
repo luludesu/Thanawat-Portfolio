@@ -7,6 +7,27 @@
 </head>
 
 <style>
+
+    body{
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+    html{
+    scroll-behavior:smooth;
+}
+
     body {
         background-color: #1a1a1a;
         color: white;
@@ -33,9 +54,15 @@
     }
 
     .project-card:hover {
-        transform: translateY(-10px);
-        background-color: #9E76B4;
-    }
+
+    transform: translateY(-10px) scale(1.02);
+
+    background-color: #9E76B4;
+
+    box-shadow:
+    0 0 25px #9E76B4,
+    0 0 50px #9E76B4;
+}
 
     .project-link{
         text-decoration: none;
@@ -48,6 +75,28 @@
         font-size: 24px;
         font-weight: bold;
     }
+
+    .tech-list{
+    margin-top:15px;
+}
+
+.tech{
+    display:inline-block;
+
+    margin:5px;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    background:#57C48D;
+
+    color:#1a1a1a;
+
+    font-size:14px;
+
+    font-weight:bold;
+}
 
     .back {
         display: inline-block;
@@ -77,6 +126,13 @@
         <div class="project-title">🎲 Guess Number Game</div>
         <p>เกมทายตัวเลขที่สร้างด้วย Python</p>
         <p>ใช้ random, while loop, if / else และ input</p>
+        <div class="tech-list">
+    <span class="tech">Python</span>
+    <span class="tech">Random</span>
+    <span class="tech">Logic</span>
+</div>
+
+<p>Completed ✅</p>
     </div>
 
 </a>
@@ -86,6 +142,14 @@
         <div class="project-title">🌌 Personal Portfolio Website</div>
         <p>เว็บไซต์ Portfolio ส่วนตัว</p>
         <p>สร้างด้วย HTML, CSS และ JavaScript อัปโหลดด้วย Vercel</p>
+        <div class="tech-list">
+    <span class="tech">HTML</span>
+    <span class="tech">CSS</span>
+    <span class="tech">JavaScript</span>
+    <span class="tech">Vercel</span>
+</div>
+
+<p>In Progress 🚧</p>
     </div>
 
 </a>

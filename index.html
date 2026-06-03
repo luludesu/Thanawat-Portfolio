@@ -17,15 +17,19 @@
 
 <style>
 
+    html{
+    scroll-behavior:smooth;
+}
+
 body {
   background:black;
   color:white;
 
-  display: flex;
+  display: block;
 
     justify-content: center;
 
-    height: 100vh;
+    min-height: 100vh;
 
   text-align: center;
 
@@ -85,8 +89,12 @@ img{
     transition: transform 0.3s ease;
 }
 
-img:hover {
-    transform: scale(1.1);
+img:hover{
+
+    transform:
+    scale(1.1)
+    rotate(3deg);
+
 }
 
 #stars {
@@ -130,7 +138,8 @@ img:hover {
 
     width: 500px;
 
-    height: 965px;
+    min-height:2220px;
+    height:auto;
 
     margin: 50px auto;
 
@@ -143,6 +152,22 @@ img:hover {
     transition: transform 0.3s ease;
 
     backdrop-filter: blur(10px);
+
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 .card:hover {
@@ -177,28 +202,6 @@ img:hover {
 
 }
 
-.project-button{
-
-    position: absolute;
-    left: 20px;
-    top: 230px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    width:10px;
-    height:180px;
-
-    overflow:hidden;
-
-    border:2px solid #57C48D;
-    border-radius:18px;
-
-    color:#57C48D;
-    text-decoration:none;
-}
-
 .badge:hover {
 
     transform: translateX(12px);
@@ -216,17 +219,494 @@ img:hover {
     font-weight: bold;
 }
 
-.project-text{
+.project-button:hover .project-text{
+    opacity:0;
 
-    display: inline-block;
-    transform: rotate(-90deg);
-    white-space: nowrap;
-    letter-spacing: 3px;
-    transition: 0.3s ease;
+    transform:
+    rotate(-90deg)
+    translateX(30px);
 }
 
-.project-button:hover .project-text{
-    transform: rotate(-90deg) translateX(5px);
+.project-button:hover .project-text-vertical{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+.slide-out{
+
+    transform:
+    translateX(250px)
+    scale(1.2);
+
+    opacity:0;
+
+    transition:0.8s ease;
+}
+
+body{
+    transition: opacity 0.8s ease;
+}
+
+.project-button{
+    will-change: transform, opacity;
+}
+
+
+body.page-out{
+    opacity:0;
+    transition:0.8s ease;
+}
+
+#loading-screen{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+    transition:opacity 1s ease;
+}
+
+.loading-text{
+
+    font-family:'JetBrains Mono', monospace;
+
+    color:#57C48D;
+
+    font-size:32px;
+
+    text-shadow:0 0 15px #57C48D;
+
+    animation: blink 1s infinite;
+}
+
+@keyframes blink{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:0.4;
+    }
+
+    100%{
+        opacity:1;
+    }
+
+}
+
+.skills-section{
+    margin-top:30px;
+    text-align:left;
+}
+
+.skills-section h2{
+    color:#57C48D;
+    text-align:center;
+    font-family:'JetBrains Mono', monospace;
+    text-shadow:0 0 10px #57C48D;
+}
+
+.skill{
+    margin:18px 0;
+}
+
+.skill-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    color:#cfcfcf;
+    font-family:'JetBrains Mono', monospace;
+    font-size:16px;
+}
+
+.percent{
+    color:#57C48D;
+    text-shadow:0 0 10px #57C48D;
+}
+
+.skill-bar{
+    width:100%;
+    height:14px;
+    background:#111;
+    border-radius:20px;
+    margin-top:8px;
+    overflow:hidden;
+    border:1px solid #57C48D;
+}
+
+.skill-fill{
+    width:0%;
+    height:100%;
+    background:#57C48D;
+    box-shadow:0 0 15px #57C48D;
+    border-radius:20px;
+    transition:width 1.5s ease;
+}
+
+.featured-project,
+.achievements-section,
+.timeline-section{
+    margin-top:35px;
+}
+
+.featured-project h2,
+.achievements-section h2,
+.timeline-section h2{
+    color:#57C48D;
+    text-align:center;
+    font-family:'JetBrains Mono', monospace;
+    text-shadow:0 0 10px #57C48D;
+}
+
+.featured-card{
+    border:1px solid #57C48D;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 0 18px #57C48D;
+    transition:0.3s ease;
+}
+
+.featured-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 30px #57C48D;
+}
+
+.featured-card h3{
+    color:#9E76B4;
+    text-shadow:0 0 10px #9E76B4;
+}
+
+.mini-btn{
+    display:inline-block;
+    margin:8px;
+    padding:8px 14px;
+    border:1px solid #57C48D;
+    border-radius:10px;
+    color:#57C48D;
+    text-decoration:none;
+    font-family:'JetBrains Mono', monospace;
+    transition:0.3s;
+}
+
+.mini-btn:hover{
+    background:#57C48D;
+    color:#1a1a1a;
+    box-shadow:0 0 18px #57C48D;
+}
+
+.achievements-section p{
+    font-size:16px;
+    text-align:left;
+}
+
+.timeline-item{
+    border-left:2px solid #57C48D;
+    padding-left:15px;
+    margin:18px 0;
+    text-align:left;
+}
+
+.timeline-item span{
+    color:#57C48D;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:bold;
+}
+
+.side-nav{
+    position:fixed;
+
+    left:20px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:55px;
+    padding:18px 8px;
+
+    border:2px solid #57C48D;
+    border-radius:18px;
+
+    background:rgba(0,0,0,0.55);
+
+    box-shadow:0 0 20px #57C48D;
+
+    z-index:20;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+
+    overflow:hidden;
+
+    transition:0.35s ease;
+}
+
+.side-nav:hover{
+    width:180px;
+
+    background:rgba(87,196,141,0.15);
+
+    box-shadow:
+    0 0 20px #57C48D,
+    0 0 45px #57C48D;
+}
+
+.side-nav a{
+    color:#57C48D;
+
+    text-decoration:none;
+
+    font-family:'JetBrains Mono', monospace;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    white-space:nowrap;
+
+    opacity:0.75;
+
+    transition:0.3s ease;
+}
+
+.side-nav a:hover{
+    color:#1a1a1a;
+
+    background:#57C48D;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    box-shadow:0 0 18px #57C48D;
+
+    opacity:1;
+}
+
+.side-nav{
+
+    position:fixed;
+
+    left:20px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:40px;
+
+    min-height:250px;
+
+    background:rgba(0,0,0,0.65);
+
+    border:2px solid #57C48D;
+
+    border-radius:20px;
+
+    box-shadow:0 0 20px #57C48D;
+
+    z-index:999;
+
+    overflow:hidden;
+
+    transition:0.4s ease;
+
+}
+
+.side-nav:hover{
+
+    width:180px;
+
+    background:rgba(87,196,141,0.12);
+backdrop-filter:blur(10px);
+
+}
+
+.logo-stack{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+
+    color:#57C48D;
+    font-family:'JetBrains Mono', monospace;
+    font-size:20px;
+    letter-spacing:4px;
+
+    transition:0.3s ease;
+}
+
+.nav-links{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    transform:translateY(20px);
+
+    transition:0.3s ease;
+}
+
+.side-nav:hover .logo-stack{
+    opacity:0;
+    transform:translateY(-20px);
+}
+
+.side-nav:hover .nav-links{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.arrow{
+
+    margin-top:10px;
+
+}
+
+@keyframes blink{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:0.25;
+    }
+
+    100%{
+        opacity:1;
+    }
+
+}
+
+.arrow{
+
+    animation:blink 1.4s infinite;
+
+}
+
+.nav-links{
+
+    opacity:0;
+
+    margin-top:20px;
+
+    padding:0 15px;
+
+    transition:0.3s ease;
+
+}
+
+.side-nav:hover .nav-links{
+
+    opacity:1;
+
+}
+
+.nav-links a{
+
+    display:block;
+
+    color:#57C48D;
+
+    text-decoration:none;
+
+    font-family:'JetBrains Mono', monospace;
+
+    margin:12px 0;
+
+    transition:0.25s;
+
+}
+
+.nav-links a:hover{
+
+    transform:translateX(8px);
+
+    text-shadow:0 0 12px #57C48D;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px #57C48D,
+        0 0 20px #57C48D;
+
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+#home,
+#skills,
+#featured,
+#contact{
+    scroll-margin-top:40px;
+}
+
+.project-exit{
+    display:block;
+    transition:0.8s ease;
+}
+
+.project-exit.slide-out{
+    transform:translateX(140px) scale(1.15);
+    opacity:0;
+}
+
+.side-nav.slide-out{
+
+    transform:
+        translateY(-50%)
+        translateX(250px);
+
+    opacity:0;
+
+    transition:0.8s ease;
+}
+
+.side-nav.lock-open{
+    width:180px;
+}
+
+.side-nav.lock-open .logo-stack{
+    opacity:0;
+    transform:translateY(-20px);
+}
+
+.side-nav.lock-open .nav-links{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.project-exit.slide-out{
+    transform:translateX(180px) scale(1.15);
+    opacity:0;
+    transition:0.8s ease;
 }
 
 </style>
@@ -235,13 +715,40 @@ img:hover {
     
 <body>
 
-    <a href="portfolio.html" class="badge project-button">
-        <span class="project-text">▲ VIEW PROJECTS</span>
-    </a>
+    <div id="loading-screen">
+
+    <div class="loading-text">
+        INITIALIZING PORTFOLIO...
+    </div>
+
+</div>
+
+    <div class="side-nav">
+
+    <div class="logo-stack">
+        <span>M</span>
+        <span>E</span>
+        <span>N</span>
+        <span>U</span>
+        <span class="arrow">▶</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#skills">SKILLS</a>
+        <a href="#featured">PROJECTS</a>
+        <a href="#contact">CONTACT</a>
+        <a href="portfolio.html" id="projectBtn" class="project-exit">
+    ALL PROJECTS
+</a>
+
+</div>
+
+    </div>
 
 <div id="stars"></div>
 
-<div class="card">
+<div class="card" id="home">
 
     <img src="Yipee.jfif" alt="Profile Image" width="200" height="200">
     <h1 class="name">Thanawat Senatham</h1>
@@ -270,9 +777,101 @@ img:hover {
     <p>> พร้อมกับกำลังสร้าง 
         <span class="highlight">Github Portfolio</span>
     </p>
-    <p>
-        <span class="highlight">Contact ME</span>
-    </p>
+<div class="skills-section" id="skills">
+
+    <h2>MY SKILLS</h2>
+
+    <div class="skill" data-percent="45">
+        <div class="skill-head">
+            <span>Python</span>
+            <span class="percent">0%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-fill"></div>
+        </div>
+    </div>
+
+    <div class="skill" data-percent="70">
+        <div class="skill-head">
+            <span>HTML</span>
+            <span class="percent">0%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-fill"></div>
+        </div>
+    </div>
+
+    <div class="skill" data-percent="65">
+        <div class="skill-head">
+            <span>CSS</span>
+            <span class="percent">0%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-fill"></div>
+        </div>
+    </div>
+
+    <div class="skill" data-percent="35">
+        <div class="skill-head">
+            <span>JavaScript</span>
+            <span class="percent">0%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-fill"></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="featured-project" id="featured">
+
+    <h2>FEATURED PROJECT</h2>
+
+    <div class="featured-card">
+        <h3>🎲 Guess Number Game</h3>
+        <p>Python beginner project ที่ผู้เล่นสามารถเดาตัวเลขแบบเล่นได้จริงบนเว็บ</p>
+
+        <a href="guess-number.html" class="mini-btn">Play Demo</a>
+        <a href="portfolio.html" class="mini-btn">View Projects</a>
+    </div>
+
+</div>
+
+<div class="achievements-section">
+
+    <h2>ACHIEVEMENTS</h2>
+
+    <p>🏆 Built my first personal portfolio website</p>
+    <p>🚀 Deployed website on Vercel</p>
+    <p>💻 Created an interactive Python game demo</p>
+    <p>🌱 Learned Git, GitHub, HTML, CSS and JavaScript</p>
+
+</div>
+
+<div class="timeline-section">
+
+    <h2>LEARNING TIMELINE</h2>
+
+    <div class="timeline-item">
+        <span>Day 1</span>
+        <p>Started learning Python basics</p>
+    </div>
+
+    <div class="timeline-item">
+        <span>Day 3</span>
+        <p>Built personal portfolio website</p>
+    </div>
+
+    <div class="timeline-item">
+        <span>Day 4</span>
+        <p>Added GitHub, Vercel, animations and project pages</p>
+    </div>
+
+</div>
+
+    <p id="contact">
+    <span class="highlight">Contact ME</span>
+</p>
     <p>
         <span class="highlight">v  v  v  v  v</span>
     </p>
@@ -309,6 +908,153 @@ for(let i = 0; i < 300; i++) {
     star.style.opacity = Math.random();
 
 }
+</script>
+
+<script>
+
+const projectBtn = document.getElementById("projectBtn");
+
+if(projectBtn){
+
+    projectBtn.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        document.querySelector(".side-nav").classList.add("lock-open");
+
+        projectBtn.classList.add("slide-out");
+
+        document.body.classList.add("page-out");
+
+        setTimeout(() => {
+            window.location.href = "portfolio.html";
+        }, 800);
+
+    });
+
+}
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        const loading =
+        document.getElementById("loading-screen");
+
+        loading.style.opacity = "0";
+
+        setTimeout(() => {
+
+            loading.style.display = "none";
+
+        },1000);
+
+    },1200);
+
+});
+
+const skillsSection = document.querySelector(".skills-section");
+const skills = document.querySelectorAll(".skill");
+
+let skillsPlayed = false;
+
+function startSkillsAnimation(){
+
+    if(skillsPlayed){
+        return;
+    }
+
+    skillsPlayed = true;
+
+    skills.forEach((skill) => {
+
+        const target = Number(skill.dataset.percent);
+        const fill = skill.querySelector(".skill-fill");
+        const percentText = skill.querySelector(".percent");
+
+        let randomTime = 0;
+
+        const randomInterval = setInterval(() => {
+
+            const randomNumber = Math.floor(Math.random() * 101);
+            percentText.textContent = randomNumber + "%";
+
+            randomTime++;
+
+            if(randomTime > 15){
+
+                clearInterval(randomInterval);
+
+                fill.style.width = target + "%";
+                percentText.textContent = target + "%";
+            }
+
+        }, 60);
+
+    });
+}
+
+window.addEventListener("scroll", () => {
+
+    const sectionPosition = skillsSection.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight * 0.8;
+
+    if(sectionPosition < screenPosition){
+        startSkillsAnimation();
+    }
+
+});
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+        startSkillsAnimation();
+    }, 2500);
+
+});
+
+function smoothScrollTo(targetY, duration){
+
+    const startY = window.pageYOffset;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    function animation(currentTime){
+
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        window.scrollTo(0, startY + distance * ease);
+
+        if(progress < 1){
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
+document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
+
+    link.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute("href"));
+
+        if(target){
+            const targetY =
+            target.getBoundingClientRect().top + window.pageYOffset - 40;
+
+            smoothScrollTo(targetY, 900);
+        }
+
+    });
+
+});
+
 </script>
 
 </body>
