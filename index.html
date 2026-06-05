@@ -427,76 +427,23 @@ body.page-out{
     font-weight:bold;
 }
 
-.side-nav{
-    position:fixed;
-
-    left:20px;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    width:55px;
-    padding:18px 8px;
-
-    border:2px solid #57C48D;
-    border-radius:18px;
-
-    background:rgba(0,0,0,0.55);
-
-    box-shadow:0 0 20px #57C48D;
-
-    z-index:20;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:18px;
-
-    overflow:hidden;
-
-    transition:0.35s ease;
+.timeline-item{
+    position:relative;
+    border-left:2px solid #57C48D;
+    padding-left:20px;
+    margin:25px 0;
 }
 
-.side-nav:hover{
-    width:180px;
-
-    background:rgba(87,196,141,0.15);
-
-    box-shadow:
-    0 0 20px #57C48D,
-    0 0 45px #57C48D;
-}
-
-.side-nav a{
-    color:#57C48D;
-
-    text-decoration:none;
-
-    font-family:'JetBrains Mono', monospace;
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    white-space:nowrap;
-
-    opacity:0.75;
-
-    transition:0.3s ease;
-}
-
-.side-nav a:hover{
-    color:#1a1a1a;
-
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-7px;
+    top:5px;
+    width:12px;
+    height:12px;
     background:#57C48D;
-
-    padding:8px 14px;
-
-    border-radius:10px;
-
-    box-shadow:0 0 18px #57C48D;
-
-    opacity:1;
+    border-radius:50%;
+    box-shadow:0 0 15px #57C48D;
 }
 
 .side-nav{
@@ -556,21 +503,6 @@ backdrop-filter:blur(10px);
     transition:0.3s ease;
 }
 
-.nav-links{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    opacity:0;
-    transform:translateY(20px);
-
-    transition:0.3s ease;
-}
-
 .side-nav:hover .logo-stack{
     opacity:0;
     transform:translateY(-20px);
@@ -584,6 +516,7 @@ backdrop-filter:blur(10px);
 .arrow{
 
     margin-top:10px;
+    animation:blink 1.4s infinite;
 
 }
 
@@ -603,22 +536,23 @@ backdrop-filter:blur(10px);
 
 }
 
-.arrow{
-
-    animation:blink 1.4s infinite;
-
-}
-
 .nav-links{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    gap:18px;
 
     opacity:0;
-
-    margin-top:20px;
+    transform:translateY(20px);
 
     padding:0 15px;
 
     transition:0.3s ease;
-
 }
 
 .side-nav:hover .nav-links{
@@ -628,19 +562,19 @@ backdrop-filter:blur(10px);
 }
 
 .nav-links a{
-
     display:block;
 
     color:#57C48D;
-
     text-decoration:none;
 
     font-family:'JetBrains Mono', monospace;
 
-    margin:12px 0;
+    font-size:13px;
+    letter-spacing:2px;
+
+    margin:0;
 
     transition:0.25s;
-
 }
 
 .nav-links a:hover{
@@ -655,10 +589,6 @@ backdrop-filter:blur(10px);
         0 0 10px #57C48D,
         0 0 20px #57C48D;
 
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 #home,
@@ -709,6 +639,51 @@ html{
     transition:0.8s ease;
 }
 
+.nav-item.active{
+
+    color:white;
+
+    text-shadow:
+        0 0 10px #57C48D,
+        0 0 20px #57C48D,
+        0 0 30px #57C48D;
+
+    transform:translateX(8px);
+
+}
+
+.achievement-grid{
+    display:grid;
+    gap:15px;
+    margin-top:20px;
+}
+
+.achievement-card{
+    border:1px solid #57C48D;
+    border-radius:15px;
+    padding:15px;
+    text-align:left;
+    box-shadow:0 0 15px rgba(87,196,141,0.6);
+    transition:0.3s ease;
+}
+
+.achievement-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 25px #57C48D;
+}
+
+.achievement-card h3{
+    color:#57C48D;
+    margin-bottom:8px;
+}
+
+.visitor-box{
+    margin-top:25px;
+    color:#57C48D;
+    font-family:'JetBrains Mono', monospace;
+    text-shadow:0 0 10px #57C48D;
+}
+
 </style>
 
 </head>
@@ -734,10 +709,14 @@ html{
     </div>
 
     <div class="nav-links">
-        <a href="#home">HOME</a>
-        <a href="#skills">SKILLS</a>
-        <a href="#featured">PROJECTS</a>
-        <a href="#contact">CONTACT</a>
+        <a href="#home" class="nav-item">HOME</a>
+
+        <a href="#skills" class="nav-item">SKILLS</a>
+
+        <a href="#featured" class="nav-item">PROJECTS</a>
+
+        <a href="#contact" class="nav-item">CONTACT</a>
+
         <a href="portfolio.html" id="projectBtn" class="project-exit">
     ALL PROJECTS
 </a>
@@ -837,14 +816,22 @@ html{
 
 </div>
 
-<div class="achievements-section">
+<div class="achievement-grid">
 
-    <h2>ACHIEVEMENTS</h2>
+    <div class="achievement-card">
+        <h3>🏆 First Portfolio</h3>
+        <p>Built my first personal portfolio website</p>
+    </div>
 
-    <p>🏆 Built my first personal portfolio website</p>
-    <p>🚀 Deployed website on Vercel</p>
-    <p>💻 Created an interactive Python game demo</p>
-    <p>🌱 Learned Git, GitHub, HTML, CSS and JavaScript</p>
+    <div class="achievement-card">
+        <h3>🚀 Vercel Deploy</h3>
+        <p>Deployed my website online with Vercel</p>
+    </div>
+
+    <div class="achievement-card">
+        <h3>💻 Python Game</h3>
+        <p>Created an interactive Guess Number Game</p>
+    </div>
 
 </div>
 
@@ -890,6 +877,10 @@ html{
 </a>
 </div>
 
+<div class="visitor-box">
+    👀 Visitors: <span id="visitorCount">0</span>
+</div>
+
 <script>
 
 const stars = document.getElementById('stars');
@@ -908,6 +899,7 @@ for(let i = 0; i < 300; i++) {
     star.style.opacity = Math.random();
 
 }
+
 </script>
 
 <script>
@@ -1054,6 +1046,53 @@ document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
     });
 
 });
+
+const sections = document.querySelectorAll(
+    "#home, #skills, #featured, #contact"
+);
+
+const navItems = document.querySelectorAll(".nav-item");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach((section) => {
+
+        const sectionTop = section.offsetTop - 150;
+
+        if(window.scrollY >= sectionTop){
+            current = section.getAttribute("id");
+        }
+
+    });
+
+    navItems.forEach((item) => {
+
+        item.classList.remove("active");
+
+        const href =
+        item.getAttribute("href").replace("#","");
+
+        if(href === current){
+            item.classList.add("active");
+        }
+
+    });
+
+});
+
+let visits = localStorage.getItem("visits");
+
+if(visits === null){
+    visits = 1;
+}else{
+    visits = Number(visits) + 1;
+}
+
+localStorage.setItem("visits", visits);
+
+document.getElementById("visitorCount").textContent = visits;
 
 </script>
 
