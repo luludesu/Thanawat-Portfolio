@@ -680,6 +680,26 @@ backdrop-filter:blur(10px);
     text-shadow:0 0 10px #57C48D;
 }
 
+.fade-section{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+}
+
+.fade-section.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
 </style>
 
 </head>
@@ -752,7 +772,7 @@ backdrop-filter:blur(10px);
     <p>> พร้อมกับกำลังสร้าง 
         <span class="highlight">Github Portfolio</span>
     </p>
-<div class="skills-section" id="skills">
+<div class="skills-section fade-section" id="skills">
 
     <h2>MY SKILLS</h2>
 
@@ -798,7 +818,7 @@ backdrop-filter:blur(10px);
 
 </div>
 
-<div class="featured-project" id="featured">
+<div class="featured-project fade-section" id="featured">
 
     <h2>FEATURED PROJECT</h2>
 
@@ -812,7 +832,7 @@ backdrop-filter:blur(10px);
 
 </div>
 
-<div class="achievement-grid">
+<div class="achievement-grid fade-section">
 
     <div class="achievement-card">
         <h3>🏆 First Portfolio</h3>
@@ -831,7 +851,7 @@ backdrop-filter:blur(10px);
 
 </div>
 
-<div class="timeline-section">
+<div class="timeline-section fade-section">
 
     <h2>LEARNING TIMELINE</h2>
 
@@ -1090,7 +1110,43 @@ localStorage.setItem("visits", visits);
 
 document.getElementById("visitorCount").textContent = visits;
 
+const fadeSections =
+document.querySelectorAll(".fade-section");
+
+function revealSections(){
+
+    fadeSections.forEach((section) => {
+
+        const sectionTop =
+        section.getBoundingClientRect().top;
+
+        const triggerPoint =
+        window.innerHeight * 0.85;
+
+        if(sectionTop < triggerPoint){
+
+            section.classList.add("show");
+
+        }
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    revealSections
+);
+
+window.addEventListener(
+    "load",
+    revealSections
+);
+
 </script>
+
+<script data-goatcounter="https://thanawat-portfolio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 
